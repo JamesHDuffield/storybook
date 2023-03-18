@@ -1,6 +1,14 @@
-import { CollectionConfig } from 'payload/types';
+import { Story } from 'payload/generated-types';
+import { CollectionConfig, CollectionAfterChangeHook } from 'payload/types';
 
-// Example Collection - For reference only, this must be added to payload.config.ts to be used.
+const generateContent: CollectionAfterChangeHook<Story> = async ({ doc, operation }) => {
+  if (operation === 'create') {
+    // TODO Generate content from AI source
+    doc.content = `This is AI generated`;
+  }
+  return doc;
+};
+
 const Stories: CollectionConfig = {
   slug: 'stories',
   admin: {
@@ -27,9 +35,12 @@ const Stories: CollectionConfig = {
     },
     {
       name: 'content',
-      type: 'richText',
+      type: 'textarea',
     },
   ],
+  hooks: {
+    afterChange: [generateContent],
+  },
 };
 
 export default Stories;
