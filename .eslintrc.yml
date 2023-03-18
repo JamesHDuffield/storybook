@@ -1,0 +1,5 @@
+extends:
+  - intolerable-style-guide
+parserOptions:
+  project: ./tsconfig.json
+root: true

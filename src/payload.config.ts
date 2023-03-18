@@ -8,10 +8,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [
-    Users,
-    Stories,
-  ],
+  collections: [Users, Stories],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
