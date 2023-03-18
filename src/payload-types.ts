@@ -27,7 +27,7 @@ export interface Story {
   id: string;
   title: string;
   prompt?: string;
-  status?: 'unapproved' | 'approved';
+  status?: 'awaiting' | 'unapproved' | 'approved';
   content?: string;
   createdAt: string;
   updatedAt: string;

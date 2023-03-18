@@ -1,12 +1,15 @@
 import { Story } from 'payload/generated-types';
-import { CollectionConfig, CollectionAfterChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
+import { generateFromPrompt } from '../services/openai';
 
-const generateContent: CollectionAfterChangeHook<Story> = async ({ doc, operation }) => {
-  if (operation === 'create') {
-    // TODO Generate content from AI source
-    doc.content = `This is AI generated`;
+const generateContent: CollectionBeforeChangeHook<Story> = async ({ data }) => {
+  if (data.prompt && data.status === 'awaiting') {
+    console.log(`Generating content for story`);
+    const content = await generateFromPrompt(data.prompt);
+    data.content = content.trim();
+    data.status = 'unapproved';
   }
-  return doc;
+  return data;
 };
 
 const Stories: CollectionConfig = {
@@ -27,8 +30,9 @@ const Stories: CollectionConfig = {
     {
       name: 'status',
       type: 'select',
-      defaultValue: 'unapproved',
+      defaultValue: 'awaiting',
       options: [
+        { label: 'Awaiting Generation', value: 'awaiting' },
         { label: 'Unapproved', value: 'unapproved' },
         { label: 'Approved', value: 'approved' },
       ],
@@ -39,7 +43,7 @@ const Stories: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [generateContent],
+    beforeChange: [generateContent],
   },
 };
 
