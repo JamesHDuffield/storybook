@@ -1,7 +1,24 @@
 import { Story } from 'payload/generated-types';
-import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeChangeHook, CollectionBeforeValidateHook } from 'payload/types';
 import { generateContentFromPrompt } from '../services/openai';
 import { generatePromptFromOptions } from '../services/prompt';
+import { getRandomOptionId } from '../services/random-option';
+
+const generateOptions: CollectionBeforeValidateHook<Story> = async ({ data }) => {
+  if (!data.character) {
+    data.character = await getRandomOptionId('characters');
+  }
+  if (!data.plot) {
+    data.plot = await getRandomOptionId('plots');
+  }
+  if (!data.theme) {
+    data.theme = await getRandomOptionId('themes');
+  }
+  if (!data.style) {
+    data.style = await getRandomOptionId('styles');
+  }
+  return data;
+};
 
 const generatePrompt: CollectionBeforeChangeHook<Story> = async ({ data }) => {
   if (data.status === 'new') {
@@ -82,6 +99,7 @@ const Stories: CollectionConfig = {
     },
   ],
   hooks: {
+    beforeValidate: [generateOptions],
     beforeChange: [generatePrompt, generateContent],
   },
 };

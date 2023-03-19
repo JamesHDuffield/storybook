@@ -8,7 +8,7 @@ import Plots from './collections/Plots';
 import Styles from './collections/Styles';
 
 export default buildConfig({
-  serverURL: `http://localhost:${process.env.ADMIN_PORT}`,
+  serverURL: `http://localhost:3000`,
   admin: {
     user: Users.slug,
   },
