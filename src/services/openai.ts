@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const generateFromPrompt = async (prompt: string): Promise<string> => {
+export const generateContentFromPrompt = async (prompt: string): Promise<string> => {
   try {
     const response = await openai.createCompletion({
       model: process.env.OPENAI_MODEL,

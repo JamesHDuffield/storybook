@@ -9,6 +9,10 @@ export interface Config {
   collections: {
     users: User;
     stories: Story;
+    characters: Character;
+    themes: Theme;
+    plots: Plot;
+    styles: Style;
   };
   globals: {};
 }
@@ -26,9 +30,37 @@ export interface User {
 export interface Story {
   id: string;
   title: string;
+  character: string | Character;
+  theme: string | Theme;
+  plot: string | Plot;
+  style: string | Style;
   prompt?: string;
-  status?: 'awaiting' | 'unapproved' | 'approved';
+  status?: 'new' | 'awaiting' | 'unapproved' | 'approved';
   content?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Character {
+  id: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Theme {
+  id: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Plot {
+  id: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Style {
+  id: string;
+  description: string;
   createdAt: string;
   updatedAt: string;
 }
