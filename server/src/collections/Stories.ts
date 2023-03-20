@@ -44,6 +44,9 @@ const Stories: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  access: {
+    read: () => true, // All stories are public
+  },
   fields: [
     {
       name: 'title',
