@@ -6,5 +6,11 @@
     {
       "path": "site"
     }
-  ]
+  ],
+  "settings": {
+    "conventionalCommits.scopes": [
+      "server",
+      "site"
+    ]
+  }
 }
