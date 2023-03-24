@@ -6,14 +6,14 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const generateContentFromPrompt = async (prompt: string): Promise<string> => {
+export const generateFromPrompt = async (prompt: string): Promise<string> => {
   try {
     const response = await openai.createCompletion({
       model: process.env.OPENAI_MODEL,
       prompt,
       max_tokens: +process.env.OPENAI_MAX_TOKENS,
     });
-    return response.data.choices[0].text;
+    return response.data.choices[0].text.trim();
   } catch (error) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     console.error(error?.response?.data?.error); // Axios error format
