@@ -22,5 +22,5 @@ export const generatePromptFromOptions = async (story: Partial<Story>): Promise<
     id: story.style as string,
     depth: 1,
   });
-  return `Write a short children's story in the style of ${style.description} about ${character.description} who ${plot.description}, with the theme of ${theme.description}.`;
+  return `${style.content}---\n\nWrite a short children's story following the prvious examples format about ${character.description} who ${plot.description}, with the theme of ${theme.description}.`;
 };

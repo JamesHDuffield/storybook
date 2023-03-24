@@ -20,19 +20,12 @@ const generateOptions: CollectionBeforeValidateHook<Story> = async ({ data }) =>
   return data;
 };
 
-const generatePrompt: CollectionBeforeChangeHook<Story> = async ({ data }) => {
-  if (data.status === 'new') {
-    console.log(`Generating prompt for story`);
-    data.prompt = await generatePromptFromOptions(data);
-    data.status = 'awaiting';
-  }
-  return data;
-};
-
 const generateContent: CollectionBeforeChangeHook<Story> = async ({ data }) => {
-  if (data.prompt && data.status === 'awaiting') {
+  if (data.status === 'awaiting') {
+    console.log(`Generating prompt for story`);
+    const prompt = await generatePromptFromOptions(data);
     console.log(`Generating content for story`);
-    const content = await generateContentFromPrompt(data.prompt);
+    const content = await generateContentFromPrompt(prompt);
     data.content = content.trim();
     data.status = 'unapproved';
   }
@@ -82,15 +75,10 @@ const Stories: CollectionConfig = {
       hasMany: false,
     },
     {
-      name: 'prompt',
-      type: 'text',
-    },
-    {
       name: 'status',
       type: 'select',
-      defaultValue: 'new',
+      defaultValue: 'awaiting',
       options: [
-        { label: 'New', value: 'new' },
         { label: 'Awaiting Generation', value: 'awaiting' },
         { label: 'Unapproved', value: 'unapproved' },
         { label: 'Approved', value: 'approved' },
@@ -103,7 +91,7 @@ const Stories: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [generateOptions],
-    beforeChange: [generatePrompt, generateContent],
+    beforeChange: [generateContent],
   },
 };
 

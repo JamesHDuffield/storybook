@@ -12,6 +12,15 @@ const Styles: CollectionConfig = {
       required: true,
       unique: true,
     },
+    {
+      name: 'content',
+      type: 'textarea',
+      required: true,
+    },
+    {
+      name: 'source',
+      type: 'text',
+    },
   ],
 };
 

@@ -34,8 +34,7 @@ export interface Story {
   theme: string | Theme;
   plot: string | Plot;
   style: string | Style;
-  prompt?: string;
-  status?: 'new' | 'awaiting' | 'unapproved' | 'approved';
+  status?: 'awaiting' | 'unapproved' | 'approved';
   content?: string;
   createdAt: string;
   updatedAt: string;
@@ -61,6 +60,8 @@ export interface Plot {
 export interface Style {
   id: string;
   description: string;
+  content: string;
+  source?: string;
   createdAt: string;
   updatedAt: string;
 }
