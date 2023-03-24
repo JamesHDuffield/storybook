@@ -1,0 +1,28 @@
+
+/* Color Palette by polyphrog: https://lospec.com/palette-list/pastel-16 */
+:root {
+  --red: #ea7286;
+  --orange: #eab281;
+  --lime: #e3e19f;
+  --light-green: #a9c484;
+  --green: #5d937b;
+  --light-orange: #f5d1b6;
+  --grey: #58525a;
+  --purple: #a07ca7;
+  --pink: #f4a4bf;
+  --off-white: #eeede3;
+  --beige: #d6cec2;
+  --light-grey: #a2a6a9;
+  --steel: #777f8f;
+  --blue: #a3b2d2;
+  --light-blue: #bfded8;
+  --terracotta: #bf796d;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 1em;
+  background: var(--light-orange);;
+}
