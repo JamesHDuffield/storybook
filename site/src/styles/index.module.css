@@ -6,3 +6,25 @@
 .title {
   text-align: center;
 }
+
+.page {
+  position: relative;
+  animation: fadeInFromBelow 1s;
+}
+
+@keyframes fadeInFromBelow {
+  from {
+    opacity: 0;
+    top: 50px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.3;
+  z-index: -1;
+}
