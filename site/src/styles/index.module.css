@@ -22,9 +22,3 @@
     top: 0;
   }
 }
-
-.cloud {
-  position: absolute;
-  opacity: 0.3;
-  z-index: -1;
-}
