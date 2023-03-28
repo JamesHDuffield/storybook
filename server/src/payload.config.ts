@@ -7,8 +7,8 @@ import Themes from './collections/Theme';
 import Plots from './collections/Plots';
 import Styles from './collections/Styles';
 
-export default buildConfig({
-  serverURL: `http://localhost:3000`,
+const config = {
+  serverURL: `https://storybook-payload-cms-3h7kbxttga-km.a.run.app`,
   admin: {
     user: Users.slug,
   },
@@ -19,5 +19,7 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  cors: '*',
-});
+  cors: ['https://storybook-payload-cms-3h7kbxttga-km.a.run.app', 'https://storybook-eosin-five.vercel.app'],
+};
+
+export default buildConfig(config);

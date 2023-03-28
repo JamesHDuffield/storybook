@@ -23,7 +23,7 @@ const start = async (): Promise<void> => {
   });
 
   // Add your own express routes here
-  app.listen(process.env.ADMIN_PORT);
+  app.listen(3000);
 };
 
 void start();
