@@ -4,7 +4,7 @@ This project allows the generation and management of AI generated children's sto
 
 ## Site
 
-The public facing website is accessible at [https://storybook-6auqzftve-jameshduffield.vercel.app/](https://storybook-6auqzftve-jameshduffield.vercel.app/).
+The public facing website is accessible at [https://storybook-eosin-five.vercel.app/](https://storybook-eosin-five.vercel.app/).
 
 The site was generated using React NextJS. No server side rendering or APIs are used as part of the site, essentially being a static website. The site is hosted on Vercel.
 
