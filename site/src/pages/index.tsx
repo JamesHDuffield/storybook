@@ -11,7 +11,7 @@ const storyFetcher = async ({ page }: { page: number}) => {
     limit: 1,
     'where[status][equals]': 'approved',
   });
-  const res = await fetch(`http://localhost:3000/api/stories?${query}`);
+  const res = await fetch(`${process.env.apiUrl}/stories?${query}`);
   const data: { docs: Story[] } = await res.json();
   return data.docs[0] ?? null;
 }
