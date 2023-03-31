@@ -1,4 +1,4 @@
-# AI generated children's story a day
+# AI generated childrens story a day
 
 This project allows the generation and management of AI generated children's stories, with the intent to produce a short, unique, coherent story before bed every night.
 

@@ -1,4 +1,4 @@
-import { buildConfig } from 'payload/config';
+import { buildConfig, Config } from 'payload/config';
 import path from 'path';
 import Users from './collections/Users';
 import Stories from './collections/Stories';
@@ -7,8 +7,8 @@ import Themes from './collections/Theme';
 import Plots from './collections/Plots';
 import Styles from './collections/Styles';
 
-const config = {
-  serverURL: `https://storybook-payload-cms-3h7kbxttga-km.a.run.app`,
+const config: Config = {
+  serverURL: process.env.SERVER_URL,
   admin: {
     user: Users.slug,
   },
@@ -19,7 +19,7 @@ const config = {
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  cors: ['https://storybook-payload-cms-3h7kbxttga-km.a.run.app', 'https://storybook-eosin-five.vercel.app'],
+  cors: process.env.PAYLOAD_PUBLIC_CORS_ORIGINS.split(','),
 };
 
 export default buildConfig(config);

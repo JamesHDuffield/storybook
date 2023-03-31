@@ -1,19 +1,25 @@
-# storybook
+# Storybook Payload CMS
 
 This project was created using create-payload-app using the blank template.
 
 ## How to Use
 
-`yarn dev` will start up your application and reload on any changes.
+- Configure a `.env` file with the following:
+
+  - MONGODB_URI
+  - PAYLOAD_SECRET
+  - OPENAI_API_KEY
+  - OPENAI_MODEL
+  - OPENAI_MAX_TOKENS
+  - SERVER_URL
+  - PAYLOAD_PUBLIC_CORS_ORIGINS
+
+- `npm start dev` will start up your application and reload on any changes.
 
 ### Docker
 
-If you have docker and docker-compose installed, you can run `docker-compose up`
-
-To build the docker image, run `docker build -t my-tag .`
+To build the docker image, run `docker build -t storybook .`
 
 Ensure you are passing all needed environment variables when starting up your container via `--env-file` or setting them with your deployment.
 
-The 3 typical env vars will be `MONGODB_URI`, `PAYLOAD_SECRET`, and `PAYLOAD_CONFIG_PATH`
-
-`docker run --env-file .env -p 3000:3000 my-tag`
+`docker run --env-file .env -p 3000:3000 storybook`

@@ -1,8 +1,14 @@
-import express from 'express';
-import payload from 'payload';
+// DotEnv must be first
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+
+/* eslint-disable import/first */
+
+import express from 'express';
+import payload from 'payload';
+
+/* eslint-enable import/first */
 
 const app = express();
 
