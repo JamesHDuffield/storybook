@@ -19,7 +19,7 @@ const config: Config = {
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  cors: process.env.PAYLOAD_PUBLIC_CORS_ORIGINS.split(','),
+  cors: process.env.PAYLOAD_PUBLIC_CORS_ORIGINS?.split(','),
 };
 
 export default buildConfig(config);
